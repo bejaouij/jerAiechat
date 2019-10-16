@@ -1,0 +1,27 @@
+{
+  "name": "jer_aiechat",
+  "version": "0.1.0",
+  "description": "Web service to provide web applications.",
+  "main": "/mnt/c/workspace/jerAiechat/app.js",
+  "scripts": {
+    "start": "app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "pg": "^7.12.1",
+    "socket.io": "^2.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bejaouij/jerAiechat.git"
+  },
+  "keywords": [
+    "chat"
+  ],
+  "author": "Jérémy Béjaoui",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/bejaouij/jerAiechat/issues"
+  },
+  "homepage": "https://github.com/bejaouij/jerAiechat#readme"
+}
