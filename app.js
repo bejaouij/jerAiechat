@@ -11,16 +11,39 @@ let io = require('socket.io')(server);
 
 server.listen(appConfig.port);
 
+let users = [];
+
 console.log('server started on port ' + appConfig.port);
 
 io.on('connection', function(socket) {
     socket.on('new_message', function(data) {
         try {
             messageManager.create(data);
-            socket.broadcast.emit('new_message', data);
+            io.emit('new_message', data);
         } catch(error) {
             console.log(error);
             socket.emit('error_message');
         }
     });
+
+    socket.on('user_join', function(data) {
+        users.push(data.pseudo);
+
+        socket.pseudo = data.pseudo;
+        io.emit('user_join', data);
+    });
+
+    socket.on('user_left', function() {
+        users.splice(users.indexOf(data.pseudo), 1);
+
+        io.emit('user_left', {pseudo: socket.pseudo});
+    });
+
+    socket.on('disconnect', function() {
+        users.splice(users.indexOf(data.pseudo), 1);
+
+        io.emit('user_left', {pseudo: socket.pseudo});
+    });
+
+    socket.emit('connection_init', users);
 });
