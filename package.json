@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "pg": "^7.12.1",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.5.0"
   },
   "repository": {
     "type": "git",
